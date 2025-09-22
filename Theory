@@ -1,0 +1,3 @@
+CSR
+In CSR, when a user requests a web page, the server sends back a minimal index.html along with JavaScript (index.js) and CSS files.  
+The JavaScript runs in the browser, creates all the DOM elements, inserts them into the root <div>, and attaches event handlers, making the page interactive. 
