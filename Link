@@ -1,0 +1,16 @@
+import Link from "next/link"
+
+export default function Product(){
+    return <div className="w-full h-[80vh]">
+        <h1>Product Page</h1>
+        <ul className="flex flex-col mt-[100px] gap-4">
+            <li><Link href="/products/1">Product 1</Link></li>
+            <li><Link href="/products/2">Product 2</Link></li>
+            <li><Link href="/products/3">Product 3</Link></li>
+        </ul>
+    </div>
+};
+
+
+REPLACE
+<li><Link href="/products/3" replace>Product 3</Link></li> ---- if we press back after it navigate to product 3 then browswer will not go to products
