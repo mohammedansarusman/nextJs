@@ -1,0 +1,68 @@
+----------------------------------------------------------------------------------------------
+Static Meta data
+----------------------------------------------------------------------------------------------
+
+- layout.js and page.js can export metadata. layout metadata applies to all it's pages and page metadata specific to that page.  
+----------------------------------------------------------------------------------------------
+- (authentication)
+-   login.js
+-     pages.js
+-   layout.js
+
+meta data added in layout.js. 
+export const metadata = {
+  title: "Layout - Authentication page meta data",
+  description: "meta data added in layout.js"
+}
+
+if there is no export meta data in pages.js then the page.js will automatically shows the layout's meta data.
+
+suppose the meta data added in layout.js and page.js then the page.js metadata will display.
+
+----- layout -----
+export const metadata = {
+  title: "Layout - Authentication page meta data",
+  description: "meta data added in layout.js"
+}
+----- page -----
+  title: "authentication page meta data",
+  description: "checking meta data in Login Page"
+}
+
+----------------------------------------------------------------------------------------------
+ DYNAMIC META DATA
+----------------------------------------------------------------------------------------------
+- products
+-- page.js
+-- [id]
+---- page.js
+---- layout.js
+
+if I export metadata on products pages.js then the metadata will execute in that specific page.
+if the meta data addedin [id]'s layout then it will effect on [id]'s page. if we write specific in page.js the lpage will override layout.
+
+code written in [id] -  page.js
+
+import { Metadata } from "next";
+export const generateMetadata = async({params})=>{
+const {id} = await params;
+return {title: `product ID is ${id}`}
+}
+
+export default async function ProductItems({ params }) {
+  const { id } = await params;
+
+  return (
+    <div className="w-full">
+      <h1>{`Product ${id} Details`}</h1>
+    </div>
+  )
+}
+
+
+
+
+
+
+
+
