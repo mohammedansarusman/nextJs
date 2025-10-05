@@ -59,6 +59,39 @@ export default async function ProductItems({ params }) {
   )
 }
 
+----------------------------------------------------------------------------------------------
+another example
+----------------------------------------------------------------------------------------------
+
+code written in [id]----->  page.js
+
+import { Metadata } from "next";
+export const generateMetadata = async({params})=>{
+const {id} = await params;
+const title = await new Promise((resolve)=>{
+  resolve(`iphone ${id}`)
+})
+
+return {title: `product ID is ${title}`}
+}
+
+export default async function ProductItems({ params }) {
+  const { id } = await params;
+
+  return (
+    <div className="w-full">
+      <h1>{`Product ${id} Details`}</h1>
+    </div>
+  )
+}
+----------------------------------------------------------------------------------------------
+generateMetadata function metadata object can't use same time
+the metadata method will not work in 'use client' eg: if the simple increment example with state variable. 
+solution -  the Counter componenet can import to the  page.js then the 'use client' not required to use in page.js 
+----------------------------------------------------------------------------------------------
+
+
+
 
 
 
