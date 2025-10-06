@@ -1,0 +1,41 @@
+"use client";
+import { Geist, Geist_Mono } from "next/font/google";
+import { Footer } from "@/components/Footer";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+
+// export const metadata = {
+//   title: "Layout - Authentication page meta data",
+//   description: "meta data added in layout.js",
+// };
+
+export default function AuthLayOut({ children }) {
+  const path = usePathname();
+  const navLinks = [
+    { name: "Register", href: "/register" },
+    { name: "Login", href: "/login" },
+  ];
+
+  return (
+    <>
+      {
+        navLinks.map((link, index) => {
+          const isActive = path===link.href
+         return(
+          <div
+            className={isActive ? "text-blue-500 font-semibold" : "text-white"}
+            key={index}
+          >
+            <Link href={link.href}>{link.name}</Link>
+          </div>
+          )
+        }) 
+      }
+      
+        
+      <h1>{path}</h1>
+      {children}
+      <Footer />
+    </>
+  );
+}
