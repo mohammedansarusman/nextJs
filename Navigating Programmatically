@@ -1,0 +1,59 @@
+router.push("/")
+Adds a new entry to the browser's history stack.
+Think of it like:
+➡️ “Go to the new page, but keep the current one in history.”
+Result:
+You can click Back in the browser and return to the previous page.
+
+router.replace("/")
+
+Replaces the current entry in the browser’s history stack.
+
+Think of it like:
+➡️ “Go to the new page and forget the current one.”
+
+Result:
+
+You cannot go back to the previous page using the Back button.
+
+'use client'
+import { useRouter } from "next/navigation";
+export default function OrderPage(){
+    const router = useRouter();
+    const handleClick = ()=>{
+        console.log("Placing your order...")
+        router.push("/");
+    }
+    return <div>
+        <h1>Order Product</h1>
+        <button 
+            onClick={handleClick}
+            className="bg-blue-400 text-white px-2 rounded-sm"
+        >
+            Place Order
+        </button>
+    </div>
+}
+
+
+
+
+If the review id is morethan 1000 then navigate to products page 
+
+import { notFound, redirect } from "next/navigation";
+export default async function ReviewId({ params }) {
+
+    const { id, reviewId } = await params;
+    if (reviewId > 1000) {
+        // notFound();
+        redirect("/products")
+    }
+
+    return <>
+        <h1>{`the product ID is ${id}`}</h1>
+        <h1>{`Reveiew ID ${reviewId}`}</h1>
+
+
+    </>
+
+}
