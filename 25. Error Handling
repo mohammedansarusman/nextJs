@@ -1,0 +1,27 @@
+-------------------------------------
+page.js
+-------------------------------------
+
+export default function AboutPage(){
+    const randomNumber = Math.floor(Math.random()*100)%2;
+    if(randomNumber===1){
+        throw new Error("Page error due to random % 2 === 1")
+    } 
+
+
+    return <h1>Welcome About Page {randomNumber}</h1>
+
+}
+
+-------------------------------------
+error.js
+-------------------------------------
+'use client'
+export default function ErrorPage({error}){
+    
+    return <div className="w-full h-screen bg-pink-600 text-white text-5xl">
+        <h1>{error.message}</h1>
+    </div>
+}
+
+
