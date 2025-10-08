@@ -1,0 +1,25 @@
+-------------------------------------
+page.js
+-------------------------------------
+
+export default async function BlogPage(){
+    await new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(console.log("intentionaly delayed"));
+    }, 2000);
+  });
+    return <>
+        <h1>Welcome to Blog Page</h1>
+    </>
+}
+
+-------------------------------------
+loading.js
+-------------------------------------
+export default function Loading() {
+  
+  return <div className="w-full h-screen bg-blue-700">
+    <h1>Loading...</h1>
+  </div>;
+}
+-------------------------------------
