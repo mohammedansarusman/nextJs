@@ -1,0 +1,39 @@
+The below code is a layout file created in (authentication ) other folders are login and register.In layout js, there is a input tag. whenever we navigate from login to register or   
+vicecersa the input value will not change, if we use template.js instead of layout.js then the state variable will reset.
+
+
+
+export default function AuthLayOut({ children }) {
+  const [inputName, setInputName] = useState(""); 
+  const path = usePathname();
+  const navLinks = [
+    { name: "Register", href: "/register" },
+    { name: "Login", href: "/login" },
+  ];
+
+  return (
+    <>
+    <div className="h-[25px] bg-yellow-200 px-[25px]">
+      <input type="text" value={inputName} onChange={(e)=>setInputName(e.target.value)} placeholder="enter text..." className="text-black"/>
+    </div>
+      {
+        navLinks.map((link, index) => {
+          const isActive = path===link.href
+         return(
+          <div
+            className={isActive ? "text-blue-500 font-semibold" : "text-white"}
+            key={index}
+          >
+            <Link href={link.href}>{link.name}</Link>
+          </div>
+          )
+        }) 
+      }
+      
+        
+      <h1>{path}</h1>
+      {children}
+      <Footer />
+    </>
+  );
+}
