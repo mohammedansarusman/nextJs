@@ -1,0 +1,2 @@
+The error boundary will not catch errors thrown in layout js with in the same segmant because of how the component heirarchy works.  
+The layout sits above the error boundary in the component tree.  
