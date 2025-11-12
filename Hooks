@@ -1,0 +1,24 @@
+'use client'
+import { useRouter, useParams, useSearchParams, usePathname } from "next/navigation";
+export default function PropertyIdPage(){
+    const router = useRouter();
+    const params = useParams();
+    const searchParams = useSearchParams();
+    const pathname = usePathname();
+
+    console.log("hello");
+    console.log("ROUTER=>",router);
+    console.log("PARAMS=>",params)
+    console.log("S.PARAMS",searchParams);
+    console.log("PATH NAME=>", pathname);
+    
+
+
+    return(<div>
+        <h1>Property List page</h1>
+        <p>{params.id}</p>
+        <p>{searchParams.get('name')}</p> 
+        <button onClick={()=>router.replace('/')}>Click me to Home page</button>
+    </div>)
+}
+
